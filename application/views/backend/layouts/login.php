@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title><?php echo isset($meta_title)?htmlspecialchars($meta_title):'';?></title>
-	<base href="http://localhost:8080/vnperp/"> sdasdas
+	<base href="http://localhost:8080/vnperp/">
 	<link rel="stylesheet" href="template/backend/css/stylelogin.css">
 	<style>
 	/* The alert message box */

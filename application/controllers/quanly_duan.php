@@ -109,5 +109,17 @@ class Quanly_duan extends CI_Controller {
 		}
 	}
 	
+	public function getkhachhang()
+	{
+		$resultkh = $this->db->get('khachhang');
+		echo json_encode($resultkh->result());
+	}
+	
+	public function getsanpham()
+	{
+		$resultsp = $this->db->get('sanpham');
+		echo json_encode($resultsp->result());
+	}
+	
 }
 

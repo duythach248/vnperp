@@ -6,7 +6,7 @@ class Model_quanly_duan extends CI_Model {
     }
 	
 	function view_duan($param_where = NULL){
-		return $this->db->select('id, maduan, tenduan, ngaytao, ngayketthuc, trangthai')->from('duan')->order_by('id ASC')->get()->result_array();
+		return $this->db->select('duan.id, duan.maduan, duan.tenduan, duan.ngaytao, duan.ngayketthuc, duan.trangthai, khachhang.tenkhachhang as tenkh')->from('duan')->join('khachhang', 'duan.makhachhang = khachhang.id', 'left')->order_by('duan.id DESC')->get()->result_array();
 	}
 	
 	function getduan($select = 'tenduan', $param_where = NULL){
@@ -35,6 +35,7 @@ class Model_quanly_duan extends CI_Model {
         $this->db->insert('duan', array(
 			'tenduan' => $this->input->post('txttenduan'),
 			'maduan' => $this->input->post('txtmaduan'),
+			'makhachhang' => $this->input->post('idkhachhang'),
 		));
 		
 		$id = $this->db->insert_id();
@@ -44,11 +45,13 @@ class Model_quanly_duan extends CI_Model {
 			$dsmasp = $this->input->post('masp');
 			$dstensp = $this->input->post('tensp');
 			$dsslsp = $this->input->post('soluong');
+			$dsmsp = $this->input->post('midsp');
 			foreach ($dsmasp as $key => $item) {
 				$dulieusp[] = array(
 					'masanpham' => $item,
 					'tensanpham' => $dstensp[$key],
 					'maduan' => $id,
+					'idsanpham' => $dsmsp[$key],
 					'soluong' => $dsslsp[$key],
 				);
 			}
@@ -88,8 +91,8 @@ class Model_quanly_duan extends CI_Model {
 					);
 				} else {
 					$this->db->where_in('id', (int)$dsidsp[$key])->update('chitietduan', array (
-						'tensanpham' => $dstensp[$key],
-						'masanpham' => $item,
+						//'tensanpham' => $dstensp[$key],
+						//'masanpham' => $item,
 						'soluong' => $dsslsp[$key],
 					));
 				}

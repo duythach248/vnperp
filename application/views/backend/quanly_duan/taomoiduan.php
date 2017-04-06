@@ -22,11 +22,8 @@
 			margin-left: 600px;
 			margin-top: -34px;
 		}
-		
 		tr{transition:all .25s ease-in-out}
 		tr:hover{background-color: #EEE}
-
-
 </style>
 <div class="container">
     	<div class="row">
@@ -44,8 +41,8 @@
 				  		<label class="control-label">Tên Dự Án</label>		  		
 						<input class="form-control" type="text" name="txttenduan" placeholder="Nhập Tên Dự Án" value="<?php echo set_value('txttenduan', ''); ?>">				
 						<label class="control-label" style="margin-top: 10px;">Ngày Bắt Đầu</label>	
-					<div id="datetimepicker1" class="input-append date">
-				    <input data-format="dd/MM/yyyy hh:mm:ss" type="text" disabled></input>
+					<div id="datetimepicker1" name="ngaybatdaubtn" class="input-append date">
+				    <input data-format="dd/MM/yyyy hh:mm:ss" name="ngaybatdaubtn" type="text" disabled></input>
 				    <span class="add-on">
 				      <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
 				      </i>
@@ -53,7 +50,7 @@
 					</div>
 				  <label class="control-label" style="margin-top: 10px;">Ngày Kết Thúc</label>	
 					<div id="datetimepicker2" class="input-append date">
-				    <input data-format="dd/MM/yyyy hh:mm:ss" type="text"></input>
+				    <input data-format="dd/MM/yyyy hh:mm:ss" type="text" name="ngaybatdaubtn" ></input>
 				    <span class="add-on">
 				      <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
 				      </i>
@@ -70,7 +67,12 @@
 					  <div class="form-group form-group-sm" style="margin-top: -50px">
 					    <label class="col-sm-4 control-label" for="formGroupInputSmall" style="margin-top:10px ">Tên Khách Hàng*</label>
 					    <div class="col-sm-7"><br>
-						  <input class="form-control" type="text" name="txtkhachhang" placeholder="Nhập Mã Dự Án" value="<?php echo set_value('txtkhachhang', ''); ?>">
+							<input list="cars"  id="template-desc" style="width: 357px" placeholder="Nhập Tên Khách Hàng" />
+							<datalist id="cars">
+							  <option value="Tạo Khách Hàng"><a href="sitemap.php">Khách Hàng</a></option>
+							</datalist>
+							<input id="idkhachhang" name="idkhachhang" hidden />
+							<input type="text" name="txtmasp2" id="txtmasp2" hidden>
 					    </div>
 					  </div>
 					  <div class="form-group form-group-sm" style="margin-top: -50px">
@@ -103,11 +105,12 @@
 								 </ul>  
      							   <table id="table" class="table table-bordered table-hover table-condensed">
 								  <thead>
-								    <tr>		                       
-				                            <th>MÃ</th>
+								    <tr>		                                  
 				                            <th>TÊN</th>
+											<th>MÃ</th>
 				                            <th>Số Lượng</th>  
-				                            <th></th>  
+				                            <th></th>
+											<th></th> 											
 				                        </tr>
 				                    </thead>
 				                    <tbody>
@@ -181,8 +184,8 @@
 		cell2.innerHTML = txtmasp;
 		cell3.innerHTML = txtsoluong;
 		selectedrowtoinput();*/
-		$('#table tr:last').after('<tr><td><input class="form-control" value="'+$('#txttensp').val()+'" name="tensp[]"></td><td><input class="form-control" value="'+$('#txtmasp').val()+'" name="masp[]"></td><td><input class="form-control" value="'+$('#txtsoluong').val()+'" name="soluong[]"></td><td><button type="button" onclick="removercell(this);" class="btn">Xóa Sản Phẩm</button></td></tr>');
-		}
+		$('#table tr:last').after('<tr><td><input class="form-control" value="'+$('#txttensp').val()+'" name="tensp[]"></td><td><input class="form-control" value="'+$('#txtmasp').val()+'" name="masp[]"></td><td><input class="form-control" value="'+$('#txtsoluong').val()+'" name="soluong[]"></td><td><button type="button" onclick="removercell(this);" class="btn">Xóa Sản Phẩm</button></td><td><input hidden value="'+$('#txtmasp2').val()+'" name="midsp[]"></td></tr>');
+		}																																																																																											
 	}
 	function selectedrowtoinput(){	
 		for (var i = 0; i < table.rows.length; i++){
@@ -215,7 +218,6 @@
 		document.getElementById("txtsoluong").value = "";*/
 		console.log($(row).parent().parent().remove())
 	}
-	
-	
 
 </script>
+

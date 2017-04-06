@@ -41,6 +41,7 @@
 							<th></th>							
                             <th>MÃ DỰ ÁN</th>
                             <th>TÊN DỰ ÁN</th>
+							<th>TÊN KHÁCH HÀNG</th>
                             <th>NGÀY BẮT ĐẦU</th>
 							<th>NGÀY KẾT THÚC</th>
 							<th>TRẠNG THÁI</th>       
@@ -53,6 +54,7 @@
 							<th><input type="checkbox" name="checkbox[]" value="<?php echo $val['id'];?>" /></th>
                             <th><a href="index.php/quanly_duan/capnhatduan/<?php echo $val['id'];?>"><?php echo htmlspecialchars($val['maduan']);?></th>						
 							<th><?php echo htmlspecialchars($val['tenduan']);?></th>
+							<th><?php echo htmlspecialchars($val['tenkh']);?></th>
 							<th><?php echo htmlspecialchars($val['ngaytao']);?></th>
 							<th><?php echo htmlspecialchars($val['ngayketthuc']);?></th>
 							<th><center><?php echo htmlspecialchars($val['trangthai']);?></center></th>

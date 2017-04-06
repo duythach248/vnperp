@@ -70,7 +70,12 @@
 					  <div class="form-group form-group-sm" style="margin-top: -50px">
 					    <label class="col-sm-4 control-label" for="formGroupInputSmall" style="margin-top:10px ">Tên Khách Hàng*</label>
 					    <div class="col-sm-7"><br>
-						  <input class="form-control" type="text" name="txtkhachhang" placeholder="Nhập Mã Dự Án" value="<?php echo set_value('txtkhachhang', ''); ?>">
+							<input list="cars"  id="template-desc" style="width: 357px" placeholder="Nhập Tên Khách Hàng" />
+							<datalist id="cars">
+							  <option value="Tạo Khách Hàng"><a href="sitemap.php">Khách Hàng</a></option>
+							</datalist>
+							<input id="diachikh" hidden/>
+							<input type="text" name="txtofidsp" id="txtofidsp" hidden>
 					    </div>
 					  </div>
 					  <div class="form-group form-group-sm" style="margin-top: -50px">

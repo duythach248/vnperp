@@ -10,6 +10,9 @@
 	<link rel="stylesheet" href="template/backend/css/nav.css">
 	<link rel="stylesheet" href="template/backend/css/custom.css">
 	<link rel="stylesheet" href="template/backend/css/jasny-bootstrap.min.css">
+	<link rel="stylesheet" href="template/backend/css/jasny-bootstrap.min.css">	
+	<link rel="stylesheet" href="template/backend/css/easy-autocomplete.min.css"> 
+	<link rel="stylesheet" href="template/backend/css/easy-autocomplete.themes.min.css"> 
 	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/dataTables.bootstrap.min.css">
 	<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.2.4/css/buttons.dataTables.min.css">
 	<link rel="stylesheet" type="text/css" media="screen" href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">
@@ -165,6 +168,8 @@
 	<script type="text/javascript" src="https://cdn.datatables.net/1.10.13/js/dataTables.bootstrap.min.js"></script>
 	<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.4/js/dataTables.buttons.min.js"></script>
 	<script type="text/javascript" src="//cdn.datatables.net/buttons/1.2.4/js/buttons.colVis.min.js"></script>
+	<script type="text/javascript" src="template/backend/js/jquery.easy-autocomplete.min.js"></script> 
+
 	<!-- button -->
 	<script type="text/javascript" src="//cdn.datatables.net/buttons/1.2.4/js/buttons.flash.min.js"></script>
 	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
@@ -227,6 +232,61 @@
 		
 	});
 	});
+</script>
+<!-- /.autocomplete cho khach hang -->
+<script>
+var options = {
+	url:"<?php echo base_url();?>quanly_duan/getkhachhang",
+	getValue: "tenkhachhang",
+
+	template: {
+		type: "description",
+		fields: {
+			description: "diachi"
+		}
+	},
+	list: {
+		maxNumberOfElements: 5,
+		match:{
+			enabled: true
+		},
+		onClickEvent: function() {
+			var value = $("#template-desc").getSelectedItemData().id;
+			$("#idkhachhang").val(value).trigger("idkhachhang");		
+		}	
+	}
+};
+
+$("#template-desc").easyAutocomplete(options);
+</script>
+
+<!-- /.autocomplete cho san pham -->
+<script>
+var options = {
+	url:"<?php echo base_url();?>quanly_duan/getsanpham",
+	getValue: "tensanpham",
+
+	template: {
+		type: "description",
+		fields: {
+			description: "masanpham"
+		}
+	},
+	list: {
+		maxNumberOfElements: 5,
+		match:{
+			enabled: true
+		},
+		onClickEvent: function() {
+			var value = $("#txttensp").getSelectedItemData().masanpham;
+			var valueid = $("#txttensp").getSelectedItemData().id;
+			$("#txtmasp").val(value).trigger("masp");
+			$("#txtmasp2").val(valueid).trigger("idsp");
+		}	
+	}
+};
+
+$("#txttensp").easyAutocomplete(options);
 </script>
 
 </body>
